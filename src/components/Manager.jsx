@@ -11,7 +11,7 @@ const Manager = () => {
     const [passwordArray, setPasswordArray] = useState([])
 
     const getPasswords = async () => {
-        let req = await fetch("http://localhost:3000/")
+        let req = await fetch("https://password-manager-99ot.onrender.com/")
         let passwords = await req.json()
         setPasswordArray(passwords)
     }
@@ -57,7 +57,7 @@ const Manager = () => {
 
             // Delete only when editing
             if (form.id) {
-                await fetch("http://localhost:3000/", {
+                await fetch("https://password-manager-99ot.onrender.com/", {
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json"
@@ -73,7 +73,7 @@ const Manager = () => {
 
             setPasswordArray([...passwordArray, newPassword]);
 
-            await fetch("http://localhost:3000/", {
+            await fetch("https://password-manager-99ot.onrender.com/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -95,7 +95,7 @@ const Manager = () => {
         if (c) {
             setPasswordArray(passwordArray.filter(item => item.id !== id))
 
-            await fetch("http://localhost:3000/", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id }) })
+            await fetch("https://password-manager-99ot.onrender.com/", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id }) })
 
             toast('Password Deleted!', {
                 position: "top-right",
